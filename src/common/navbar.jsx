@@ -22,7 +22,7 @@ const NavBar = ({ user }) => {
       <div className="collapse navbar-collapse" id="navbarNavaltMarkup">
         <div className="navbar-nav" id="navbarNav">
           <NavLink className="nav-item nav-link" to="/query_csd">
-            Query CSD
+            Query Products
           </NavLink>
           {user && (
             <React.Fragment>

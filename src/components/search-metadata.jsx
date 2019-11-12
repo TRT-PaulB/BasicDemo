@@ -41,7 +41,7 @@ class SearchMetadata extends Form {
   };
   
   render() {
-    const { data, selectedMetadata, srchMeta } = this.state;
+    const { srchMeta } = this.state;
     
     return (
       <React.Fragment>
