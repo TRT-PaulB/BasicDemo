@@ -1,6 +1,6 @@
 
 export function getMetadataLinks(param) {
-  return "links to to the metadata of a range of products";
+  return "links to the metadata od mnatching products";
 }
 
 export function getResourceLink(resourceLnk) {
