@@ -1,9 +1,9 @@
 
-export function getMetadataLinks(param) {
-  return "links to the metadata od mnatching products";
+export function getMetadataLinks(srchParam) {   // "XXN-MXX1"
+  return "links to the metadata of matching products";
 }
 
-export function getResourceLink(resourceLnk) {
+export function getProductMetadata(resourceLnk) {
   return "generating the link to a specific product source";
 }
 

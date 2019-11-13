@@ -1,31 +1,41 @@
 import Form from "../common/form";
 import React, { Component } from "react";
 import Joi from "joi";
-import { getMetadataLinks } from "../services/queryService";
-
+import { getMetadataLinks, getProductMetadata } from "../services/queryService";
 
 class SearchMetadata extends Form {
+
   state = {
     data: {
       param1: "",
+      searchTypeChoice: ""
     },
     errors: {},    
     srchMeta: {
       output: ""
     },
-    selectedMetadata: ""
+    searchTypes: ["General Search", "Specific Product Metadata"],
   };
 
   schema = {
     _id: Joi.string(),
     param1: Joi.string()
-      .required()
-      .label("CSD Param")
+      .required(),
+      //.label("Search Param"),
+    searchTypeChoice: Joi.string()
+    .required()
+    //.label("Search Param"),  
   };
 
- async queryMetadataForProducts(param1) {
-    console.log("about to query the XXX to get metadata links for products which match the input string: " + param1);
+ async queryMetadataForProducts(srchParam) {
+    console.log("query the XXX to get metadata links for products which match the input string: " + srchParam);
     const output = await getMetadataLinks("XXN-MXX1");
+    this.setState({srchMeta: {output: output}});
+  }
+
+  async queryProductMetadata(metaLink) {
+    console.log("query the XXX to get the metadata for a particular product: " + metaLink);
+    const output = await getProductMetadata(metaLink);
     this.setState({srchMeta: {output: output}});
   }
 
@@ -36,31 +46,40 @@ class SearchMetadata extends Form {
   };
 
   doSubmit = () => {
-    const { param1 } = this.state.data;
-    this.queryMetadataForProducts(param1);  
+    const { param1, searchTypeChoice } = this.state.data;
+    if (searchTypeChoice === "General Search") {
+      this.queryMetadataForProducts(param1);  
+    } else if (searchTypeChoice === "Specific Product Metadata") {
+      this.queryProductMetadata(param1);   
+    }
   };
-  
+
+  manageComboChange(comboId) {
+    if (comboId === "searchTypeChoice") {
+        console.log("combo has changed value..." + comboId);
+    }
+  }
+
   render() {
-    const { srchMeta } = this.state;
+    const { srchMeta, searchTypes } = this.state;
     
+    const srchTypeData = searchTypes.map((s)=> { 
+      return { _id: s, name: s }; 
+    }); 
+
     return (
       <React.Fragment>
           <div className="main-content">
             <form onSubmit={this.handleSubmit} >
               <div className="lower-space">
-                <h1>Search for Product Metadata Links</h1>
+                <h1>Search Product Metadata</h1>
               </div>
 
               <div className="dataBox">
-                  {this.renderInput(
-                    "param1",
-                    "Param1",
-                    true,
-                    "700px"
-                  )}
-                  
-                  {this.renderButton("Search", "btn btn-primary m-2")}
-                  <button id="reset-btn" type="button" className="btn btn-warning m-2" onClick={this.doReset}>Reset</button>
+                 {this.renderSelect("searchTypeChoice", "Search Type", false, srchTypeData, "700px")}
+                 {this.renderInput("param1", "Param1", true, "700px")}
+                 {this.renderButton("Search", "btn btn-primary m-2")}
+                 <button id="reset-btn" type="button" className="btn btn-warning m-2" onClick={this.doReset}>Reset</button>
               </div>
             </form>
 
@@ -83,6 +102,35 @@ class SearchMetadata extends Form {
 }
 
 export default SearchMetadata;
+
+// state = {
+//   data: {
+//     start: "",
+//     destination: ""
+//   },
+
+
+// schema = {
+//   _id: Joi.string(),
+//   start: Joi.string()
+//     .required()
+//     .label("Start"),
+//   destination: Joi.string()
+//     .required()
+//     .label("Destination"),
+// };
+
+// {this.renderSelect(
+//   "searchType",
+//   "Serch Type",
+//   false,
+//   stations,
+//   "300px"
+// )}
+
+
+
+
 
 
 

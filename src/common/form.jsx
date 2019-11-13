@@ -39,13 +39,15 @@ class Form extends Component {
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
     const errorMsg = this.validateProperty(input);
-
+    
     if (errorMsg) errors[input.name] = errorMsg;
     else delete errors[input.name];
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
     this.setState({ data, errors });
+
+    this.manageComboChange(input.id);
   };
 
   handleSubmit = e => {

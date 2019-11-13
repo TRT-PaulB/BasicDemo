@@ -21,7 +21,7 @@ const NavBar = ({ user }) => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavaltMarkup">
         <div className="navbar-nav" id="navbarNav">
-          <NavLink className="nav-item nav-link" to="/query_csd">
+          <NavLink className="nav-item nav-link" to="/search-metadata">
             Query Products
           </NavLink>
           {user && (
