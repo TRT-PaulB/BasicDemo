@@ -47,7 +47,7 @@ class LoginForm extends Form {
                 </div>
                 
                 {this.renderInput("username", "Username", true, "700px")}
-                {this.renderInput("password", "Password", true, "700px")}
+                {this.renderInput("password", "Password", true, "700px", "password")}
 
                 <div className="btn-group">
                     {this.renderButton("Login", "btn btn-primary m-2")}
