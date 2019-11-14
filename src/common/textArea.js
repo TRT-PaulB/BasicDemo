@@ -1,11 +1,9 @@
 import React from "react";
 
-const TextArea = ({ name, label, error, ...rest }) => {
+const TextArea = ({ name, label, error, width, ...rest }) => {
   return (
     <div className="form-group">
-      <label htmlFor={name}>{label}</label>
-
-      <textarea id={name} name={name} className="form-control" {...rest} />
+      <textarea id={name} name={name} className="form-control" width={width} {...rest} />
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );

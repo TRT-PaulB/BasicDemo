@@ -41,8 +41,12 @@ code {
   width: 100% !important;
 }
 
+.vertical-spacer {
+   height: 20px;
+}
+
 .form-group {
-  width: 80%;
+  width: 90%;
 }
 
 .semi-form-group {
@@ -78,16 +82,23 @@ span.input-group-addon {
   margin: 0 0 0 150px !important;
 }
 
-.dataBox {
+.data-box {
   background-color: #ffffcc;
   border: solid 1px black;
   width: 75%;
   padding: 15px;
 }
 
-.outputBox {
-   background-color: white;
+.external-data-box {
+  background-color: #D9F7F4;
   border: solid 1px black;
+  width: 75%;
+  padding: 15px;
+}
+
+.output-box {
+   background-color: white;
+  border: solid 1px black; 
   width: 75%;
   padding: 15px;
 }

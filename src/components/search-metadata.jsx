@@ -8,7 +8,7 @@ class SearchMetadata extends Form {
   state = {
     data: {
       param1: "",
-      searchTypeChoice: ""
+      searchTypeChoice: "General Search"
     },
     errors: {},    
     srchMeta: {
@@ -21,28 +21,22 @@ class SearchMetadata extends Form {
     _id: Joi.string(),
     param1: Joi.string()
       .required(),
-      //.label("Search Param"),
     searchTypeChoice: Joi.string()
     .required()
-    //.label("Search Param"),  
   };
 
  async queryMetadataForProducts(srchParam) {
-    console.log("query the XXX to get metadata links for products which match the input string: " + srchParam);
     const output = await getMetadataLinks("XXN-MXX1");
     this.setState({srchMeta: {output: output}});
   }
 
   async queryProductMetadata(metaLink) {
-    console.log("query the XXX to get the metadata for a particular product: " + metaLink);
     const output = await getProductMetadata(metaLink);
     this.setState({srchMeta: {output: output}});
   }
 
   doReset = (event) => {
-    const { param1 } = this.state.data;
-    console.log("reseting param1 value '" + param1 + "' ' to blank");
-    this.setState({ data: {param1: ""}, srchMeta: {output: ""}  });
+    this.setState({ data: {param1: "", searchTypeChoice: "General Search"}, srchMeta: {output: ""}  });
   };
 
   doSubmit = () => {
@@ -53,12 +47,6 @@ class SearchMetadata extends Form {
       this.queryProductMetadata(param1);   
     }
   };
-
-  manageComboChange(comboId) {
-    if (comboId === "searchTypeChoice") {
-        console.log("combo has changed value..." + comboId);
-    }
-  }
 
   render() {
     const { srchMeta, searchTypes } = this.state;
@@ -75,11 +63,11 @@ class SearchMetadata extends Form {
                 <h1>Search Product Metadata</h1>
               </div>
 
-              <div className="dataBox">
+              <div className="data-box">
                  <div className="sub-title">
                     <h4>Build Query</h4>
                  </div>
-                 {this.renderSelect("searchTypeChoice", "Search Type", false, srchTypeData, "900px")}
+                 {this.renderSelect("searchTypeChoice", "Search Type", false, srchTypeData, "900px", "General Search")}
                  {this.renderInput("param1", "Param1", true, "700px")}
 
                  <div className="btn-group">
@@ -90,58 +78,28 @@ class SearchMetadata extends Form {
               </div>
             </form>
 
-          <div className="outputBox">
+            <div className="vertical-spacer"></div> 
 
-              <div className="sub-title">
-                  <h4>Output</h4>
-              </div>
-           
+            <div className="output-box">
+                <div className="sub-title">
+                    <h4>Output</h4>
+                </div>
                 {this.renderReadOnlyTextArea(
                   "data.output",
                   "Output",
                   false,
-                  "90%",
+                  "",
                   "10",
                   srchMeta.output
                 )}
-
+            </div>  
           </div>  
-        </div>  
-        
       </React.Fragment>
     );
   }
 }
 
 export default SearchMetadata;
-
-// state = {
-//   data: {
-//     start: "",
-//     destination: ""
-//   },
-
-
-// schema = {
-//   _id: Joi.string(),
-//   start: Joi.string()
-//     .required()
-//     .label("Start"),
-//   destination: Joi.string()
-//     .required()
-//     .label("Destination"),
-// };
-
-// {this.renderSelect(
-//   "searchType",
-//   "Serch Type",
-//   false,
-//   stations,
-//   "300px"
-// )}
-
-
-
 
 
 

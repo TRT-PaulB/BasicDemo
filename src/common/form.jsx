@@ -46,8 +46,6 @@ class Form extends Component {
     const data = { ...this.state.data };
     data[input.name] = input.value;
     this.setState({ data, errors });
-
-    this.manageComboChange(input.id);
   };
 
   handleSubmit = e => {
@@ -76,16 +74,15 @@ class Form extends Component {
         name={propName}
         label={label}
         width={width}
-        value={data[propName]} //  value={data.propName}
+        value={data[propName]} 
         onChange={this.handleChange}
-        error={errors[propName]} // error={errors.username}
+        error={errors[propName]} 
         autoFocus={autoFocus}
       />
     );
   };
 
   renderReadOnlyTextArea = (propName, label, autoFocus, width, rows, value) => {
-    const { data, errors } = this.state;
     return (
       <TextArea
         name={propName}
@@ -99,19 +96,19 @@ class Form extends Component {
     );
   };
 
-  renderSelect = (propName, label, autoFocus, options, width) => {
+  renderSelect = (propName, label, autoFocus, options, width, defaultVal) => {
     const { data, errors } = this.state;
-
     return (
       <Select
         name={propName}
         width={width}
         label={label}
-        value={data[propName]} //  value={data.propName}
+        defaultVal={defaultVal}
+        value={data[propName]} 
         autoFocus={autoFocus}
         options={options}
-        error={errors[propName]} // error={errors.username}
-        onChange={this.handleChange} // KEY: hook into this onChange event handler
+        error={errors[propName]} 
+        onChange={this.handleChange} 
       />
     );
   };
