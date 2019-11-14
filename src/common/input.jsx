@@ -3,14 +3,15 @@ import React from "react";
 const Input = ({ name, label, error, width, ...rest }) => {
   return (
     <div className="form-group">
-      <label htmlFor={name}>{label}</label>
-      <input
-        id={name}
-        name={name}
-        className="form-control"
-        {...rest} 
-      />
-      {error && <div className="alert alert-danger">{error}</div>}
+      <div className="row">
+        <div className="col-2">
+          <label className="label-type" htmlFor={name}>{label}</label>
+        </div>
+        <div className="col">
+          <input id={name} name={name} className="form-control" {...rest} />
+          {error && <div className="alert alert-danger">{error}</div>}
+        </div>
+      </div>
     </div>
   );
 };

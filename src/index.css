@@ -12,8 +12,14 @@ body {
   margin-bottom: 30px;
 }
 
-.lower-space {
-  margin-bottom: 15px;
+.page-title {
+  margin-bottom: 25px;
+  padding-left: 20%;
+}
+
+.sub-title {
+  color:purple;
+  padding-bottom: 15px;
 }
 
 code {
@@ -36,11 +42,24 @@ code {
 }
 
 .form-group {
-  width: 50%;
+  width: 80%;
 }
 
 .semi-form-group {
   width: 50%;
+}
+
+.col-2 {
+  text-align: right;
+}
+
+.btn-group {
+  padding-left: 20%;
+}
+
+.label-type {
+  text-align: right;
+  font-weight: bold;  
 }
 
 .input-group {
@@ -62,14 +81,14 @@ span.input-group-addon {
 .dataBox {
   background-color: #ffffcc;
   border: solid 1px black;
-  width: 55%;
+  width: 75%;
   padding: 15px;
 }
 
 .outputBox {
-  background-color: white;
-  width: "800px";
-  padding: "15px";
-  padding-top: 20px;
+   background-color: white;
+  border: solid 1px black;
+  width: 75%;
+  padding: 15px;
 }
 

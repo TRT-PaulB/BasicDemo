@@ -71,27 +71,39 @@ class SearchMetadata extends Form {
       <React.Fragment>
           <div className="main-content">
             <form onSubmit={this.handleSubmit} >
-              <div className="lower-space">
+              <div className="page-title">
                 <h1>Search Product Metadata</h1>
               </div>
 
               <div className="dataBox">
-                 {this.renderSelect("searchTypeChoice", "Search Type", false, srchTypeData, "700px")}
+                 <div className="sub-title">
+                    <h4>Build Query</h4>
+                 </div>
+                 {this.renderSelect("searchTypeChoice", "Search Type", false, srchTypeData, "900px")}
                  {this.renderInput("param1", "Param1", true, "700px")}
-                 {this.renderButton("Search", "btn btn-primary m-2")}
-                 <button id="reset-btn" type="button" className="btn btn-warning m-2" onClick={this.doReset}>Reset</button>
+
+                 <div className="btn-group">
+                    {this.renderButton("Search", "btn btn-primary m-2")}
+                    <button id="reset-btn" type="button" className="btn btn-warning m-2" onClick={this.doReset}>Reset</button>
+                 </div>
+                 
               </div>
             </form>
 
           <div className="outputBox">
+
+              <div className="sub-title">
+                  <h4>Output</h4>
+              </div>
+           
                 {this.renderReadOnlyTextArea(
-                "data.output",
-                "Output",
-                false,
-                "200px",
-                "10",
-                srchMeta.output
-              )}
+                  "data.output",
+                  "Output",
+                  false,
+                  "90%",
+                  "10",
+                  srchMeta.output
+                )}
 
           </div>  
         </div>  

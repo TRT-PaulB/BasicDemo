@@ -102,7 +102,6 @@ class Form extends Component {
   renderSelect = (propName, label, autoFocus, options, width) => {
     const { data, errors } = this.state;
 
-    // console.log("propname " + propName + ": ", data[propName]);
     return (
       <Select
         name={propName}
@@ -117,6 +116,5 @@ class Form extends Component {
     );
   };
 }
-// note there is no render method because this component is for validation only
 
 export default Form;

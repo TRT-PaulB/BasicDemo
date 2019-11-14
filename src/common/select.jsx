@@ -1,17 +1,17 @@
 import React from "react";
 
-const Select = ({ name, label, options, error, ...rest }) => {
+const Select = ({ name, label, options, error, width, ...rest }) => {
   return (
     <div className="form-group">
       <div className="row">
         <div className="col-2">
-          <label htmlFor={name}>{label}</label>
+          <label className="label-type" htmlFor={name}>{label}</label>
         </div>
         <div className="col">
-          <select name={name} id={name} {...rest} className="form-control">
-            <option value="" />
+          <select name={name} id={name} width={width} {...rest} className="form-control">
+            <option value="take" />
             {options.map(option => (
-              <option key={option._id} value={option._id} value={option._id}>
+              <option key={option._id} value={option._id}>
                 {option.name}
               </option>
             ))}
@@ -24,3 +24,4 @@ const Select = ({ name, label, options, error, ...rest }) => {
 };
 
 export default Select;
+
