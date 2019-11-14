@@ -1,6 +1,7 @@
 import React from "react";
 import Joi from "joi";
 import Form from "../common/form";
+import auth from "./services/authService";
 
 class LoginForm extends Form {
   state = {
@@ -16,16 +17,18 @@ class LoginForm extends Form {
   };
 
   doSubmit = async () => {
-    try {
       const { state } = this.props.location;
-      window.location = state ? state.from.pathname : "/";
-    } catch (e) {
-      if (e.response && e.response.status === 400) {
+
+      const { username, password } = this.state.data;
+      const user = auth.login(username, password);
+
+      if (user === undefined) {
         const errors = { ...this.state.errors };
-        errors.username = e.response.data; 
+        errors.username = "Check your credentials and try again"; 
         this.setState({ errors });
+      } else {
+        window.location = state ? state.from.pathname : "/";  
       }
-    }
   };
 
   doReset = (event) => {

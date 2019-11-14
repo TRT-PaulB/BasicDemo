@@ -8,12 +8,14 @@ import NotFound from "./components/notFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import auth from "./services/authService";
 
 class App extends Component {
   state = {};
 
   componentDidMount() {
-    
+      const user = auth.getCurentUser();
+      this.setState({ user });  
   }
 
   render() {
@@ -21,7 +23,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
-        <NavBar  />
+        <NavBar user={this.state.user} />
         <div className="content">
           <Switch>
             <Route path="/login" exact component={LoginForm} />
