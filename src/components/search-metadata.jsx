@@ -1,5 +1,5 @@
 import Form from "../common/form";
-import React, { Component } from "react";
+import React from "react";
 import Joi from "joi";
 import { getMetadataLinks, getProductMetadata } from "../services/queryService";
 
@@ -26,6 +26,7 @@ class SearchMetadata extends Form {
   };
 
  async queryMetadataForProducts(srchParam) {
+   console.log("dfdsfsdfsdfsdfsdfdsfdsfds");
     const output = await getMetadataLinks("XXN-MXX1");
     this.setState({srchMeta: {output: output}});
   }
