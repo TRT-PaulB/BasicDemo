@@ -14,22 +14,25 @@ class App extends Component {
   state = {};
 
   componentDidMount() {
-      const user = auth.getCurentUser();
-      this.setState({ user });  
+    const user = auth.getCurentUser();
+    this.setState({ user });  
   }
 
   render() {
     const { user } = this.state;
+
+console.log("at least this should be working in APP....");
+
     return (
       <React.Fragment>
         <ToastContainer />
-        <NavBar user={this.state.user} />
+        <NavBar user={user} />
         <div className="content">
           <Switch>
             <Route path="/login" exact component={LoginForm} />
             <Route path="/logout" exact component={Logout} />
             <Route path="/search-metadata" exact component={SearchMetadata} />
-            <Redirect from="/" exact to="/search-metadata" />
+            <Redirect from="/" exact to="/login" />
             <Route path="/not-found" component={NotFound} />
             <Redirect to="/not-found" />
           </Switch>

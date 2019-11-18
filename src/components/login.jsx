@@ -18,9 +18,7 @@ class LoginForm extends Form {
 
   doSubmit = e => {
       const { state } = this.props.location;
-      console.log("do submit goes in here.....................");
       const { username, password } = this.state.data;
-      console.log("username: " + username + "   password: " + password);
       const user = auth.login(username, password);
 
       if (user === undefined) {
@@ -33,7 +31,6 @@ class LoginForm extends Form {
   };
 
   doReset = (event) => {
-    console.log("odreset...");
     this.setState({ data: {username: "", password: ""}});
   };
 
@@ -45,20 +42,16 @@ class LoginForm extends Form {
               <div className="page-title">
                 <h1>Search Product Metadata</h1>
               </div>
-
               <div className="external-data-box">
                 <div className="sub-title">
                     <h4>Login</h4>
                 </div>
-                
                 {this.renderInput("username", "Username", true, "700px")}
                 {this.renderInput("password", "Password", true, "700px", "password")}
-
                 <div className="btn-group">
                     {this.renderButton("Login", "btn btn-primary m-2")}
                     <button id="reset-btn" type="button" className="btn btn-warning m-2" onClick={this.doReset}>Reset</button>
                 </div>
-                
               </div>
             </form>  
           </div>  

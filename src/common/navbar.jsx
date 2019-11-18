@@ -21,11 +21,11 @@ const NavBar = ({ user }) => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavaltMarkup">
         <div className="navbar-nav" id="navbarNav">
-          <NavLink className="nav-item nav-link" to="/search-metadata">
-            Query Products
-          </NavLink>
           {user && (
             <React.Fragment>
+              <NavLink className="nav-item nav-link" to="/search-metadata">
+                Query Products
+              </NavLink>
               <NavLink className="nav-item nav-link" to="/logout">
                 Logout
               </NavLink>

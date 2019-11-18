@@ -52,9 +52,7 @@ class Form extends Component {
     e.preventDefault();
     const errors = this.validateWithJoi();
     this.setState({ errors: errors || {} });
-
     if (errors) return;
-
     this.doSubmit();
   };
 

@@ -1,7 +1,7 @@
 const tokenKey = "token";
 
 export async function login(username, password) {
-// hard coded here!!!     
+    // hard coded here!!!     
     if (username === "admin" && password === "password") {
         const jwt = "hardcoded_mockJWT";
         localStorage.setItem(tokenKey, jwt); 
@@ -10,6 +10,10 @@ export async function login(username, password) {
             return {data: { username: "admin", password: "password"}};
         }
     }
+
+    console.log("resetting form as login has failed...");
+    username = "";
+    password = "";
 
     return null;
 }

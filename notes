@@ -1,3 +1,14 @@
 
 
 //  https://github.com/TRT-PaulB/ReactMosh/blob/master/react-vidly-backend-auth/src/components/goodLogin3.jsx
+
+
+- if login failed, do not progress
+- error login failed, supply generic error
+- add in JOI checks to some of the fields...
+
+- add in protected route
+- get rid of auto-populate
+
+- add in proper data
+
